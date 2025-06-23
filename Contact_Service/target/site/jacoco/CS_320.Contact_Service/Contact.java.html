@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Contact.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">contact-service</a> &gt; <a href="index.source.html" class="el_package">CS_320.Contact_Service</a> &gt; <span class="el_source">Contact.java</span></div><h1>Contact.java</h1><pre class="source lang-java linenums">package CS_320.Contact_Service;
+
+/**
+ * The Contact class represents a contact with a unique ID, first name, last name,
+ * phone number, and address. Field values are validated upon creation and when updated.
+ */
+public class Contact {
+    /** The unique identifier for the contact. Cannot be null, longer than 10 chars, or changed after creation. */
+    private final String contactId;
+    /** The first name of the contact. Cannot be null or longer than 10 chars. */
+    private String firstName;
+    /** The last name of the contact. Cannot be null or longer than 10 chars. */
+    private String lastName;
+    /** The phone number for the contact. Must be exactly 10 digits, and not null. */
+    private String phone;
+    /** The address for the contact. Cannot be null or longer than 30 chars. */
+    private String address;
+
+    /**
+     * Constructs a new Contact object after validating all parameters.
+     * @param contactId The unique identifier for the contact (max 10 chars, not null)
+     * @param firstName The first name of the contact (max 10 chars, not null)
+     * @param lastName The last name of the contact (max 10 chars, not null)
+     * @param phone The phone number (exactly 10 digits, not null)
+     * @param address The address (max 30 chars, not null)
+     * @throws IllegalArgumentException if any validation fails
+     */
+<span class="fc" id="L28">    public Contact(String contactId, String firstName, String lastName, String phone, String address) {</span>
+<span class="pc bpc" id="L29" title="1 of 4 branches missed.">        if (contactId == null || contactId.length() &gt; 10) {</span>
+<span class="fc" id="L30">        throw new IllegalArgumentException(&quot;Contact ID cannot be null or longer than 10 characters.&quot;);</span>
+        }
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">        if (firstName == null || firstName.length() &gt; 10) {</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(&quot;First name cannot be null or longer than 10 characters.&quot;);</span>
+        }
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if (lastName == null || lastName.length() &gt; 10) {</span>
+<span class="fc" id="L36">            throw new IllegalArgumentException(&quot;Last name cannot be null or longer than 10 characters.&quot;);</span>
+        }
+<span class="pc bpc" id="L38" title="2 of 6 branches missed.">        if (phone == null || phone.length() != 10 || !phone.matches(&quot;\\d{10}&quot;)) {</span>
+<span class="fc" id="L39">            throw new IllegalArgumentException(&quot;Phone must be exactly 10 digits.&quot;);</span>
+        }
+<span class="pc bpc" id="L41" title="1 of 4 branches missed.">        if (address == null || address.length() &gt; 30) {</span>
+<span class="fc" id="L42">            throw new IllegalArgumentException(&quot;Address cannot be null or longer than 30 characters.&quot;);</span>
+        }
+<span class="fc" id="L44">        this.contactId = contactId;</span>
+<span class="fc" id="L45">        this.firstName = firstName;</span>
+<span class="fc" id="L46">        this.lastName = lastName;</span>
+<span class="fc" id="L47">        this.phone = phone;</span>
+<span class="fc" id="L48">        this.address = address;</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * Gets the contact's phone number.
+     * @return the phone number
+     */
+    public String getPhone() {
+<span class="fc" id="L56">        return phone;</span>
+    }
+
+    /**
+     * Gets the contact's address.
+     * @return the address
+     */
+    public String getAddress() {
+<span class="fc" id="L64">        return address;</span>
+    }
+
+    /**
+     * Gets the unique contact ID.
+     * @return the contact ID
+     */
+    public String getContactId() {
+<span class="fc" id="L72">        return contactId;</span>
+    }
+
+    /**
+     * Gets the contact's first name.
+     * @return the first name
+     */
+    public String getFirstName() {
+<span class="fc" id="L80">        return firstName;</span>
+    }
+
+    /**
+     * Gets the contact's last name.
+     * @return the last name
+     */
+    public String getLastName() {
+<span class="fc" id="L88">        return lastName;</span>
+    }
+
+    /**
+     * Updates the contact's address after validation.
+     * @param address The new address (max 30 chars, not null)
+     * @throws IllegalArgumentException if address is invalid
+     */
+    public void setAddress(String address) {
+<span class="pc bpc" id="L97" title="1 of 4 branches missed.">        if (address == null || address.length() &gt; 30) {</span>
+<span class="fc" id="L98">            throw new IllegalArgumentException(&quot;Address cannot be null or longer than 30 characters.&quot;);</span>
+        }
+<span class="fc" id="L100">        this.address = address;</span>
+<span class="fc" id="L101">    }</span>
+
+    /**
+     * Updates the contact's first name after validation.
+     * @param firstName The new first name (max 10 chars, not null)
+     * @throws IllegalArgumentException if first name is invalid
+     */
+    public void setFirstName(String firstName) {
+<span class="pc bpc" id="L109" title="1 of 4 branches missed.">        if (firstName == null || firstName.length() &gt; 10) {</span>
+<span class="fc" id="L110">            throw new IllegalArgumentException(&quot;First name cannot be null or longer than 10 characters.&quot;);</span>
+        }
+<span class="fc" id="L112">        this.firstName = firstName;</span>
+<span class="fc" id="L113">    }</span>
+
+    /**
+     * Updates the contact's last name after validation.
+     * @param lastName The new last name (max 10 chars, not null)
+     * @throws IllegalArgumentException if last name is invalid
+     */
+    public void setLastName(String lastName) {
+<span class="pc bpc" id="L121" title="1 of 4 branches missed.">        if (lastName == null || lastName.length() &gt; 10) {</span>
+<span class="fc" id="L122">            throw new IllegalArgumentException(&quot;Last name cannot be null or longer than 10 characters.&quot;);</span>
+        }
+<span class="fc" id="L124">        this.lastName = lastName;</span>
+<span class="fc" id="L125">    }</span>
+
+    /**
+     * Updates the contact's phone number after validation.
+     * @param phone The new phone number (must be exactly 10 digits, not null)
+     * @throws IllegalArgumentException if phone number is invalid
+     */
+    public void setPhone(String phone) {
+<span class="pc bpc" id="L133" title="1 of 4 branches missed.">        if (phone == null || phone.length() != 10) {</span>
+<span class="fc" id="L134">            throw new IllegalArgumentException(&quot;Phone number must be exactly 10 digits.&quot;);</span>
+        }
+<span class="fc" id="L136">        this.phone = phone;</span>
+<span class="fc" id="L137">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

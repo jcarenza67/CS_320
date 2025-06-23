@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContactService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">contact-service</a> &gt; <a href="index.source.html" class="el_package">CS_320.Contact_Service</a> &gt; <span class="el_source">ContactService.java</span></div><h1>ContactService.java</h1><pre class="source lang-java linenums">package CS_320.Contact_Service;
+import java.util.HashMap;
+
+/** 
+ * The ContactService class manages Contact objects in memory.
+ * It supports adding, deleting, and updating contacts using a HashMap.
+ */
+
+public class ContactService {
+    // Stores contacts, using contactId as the unique key
+    private HashMap&lt;String, Contact&gt; contacts;
+
+    // Constructor initializes the HashMap
+<span class="fc" id="L14">    public ContactService() {</span>
+<span class="fc" id="L15">        contacts = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L16">    }</span>
+
+    /**
+     * Adds a new contact to the service if the contactId is unique.
+     * @param contact The Contact object to add
+     * @throws IllegalArgumentException if the contactId already exists
+     */
+    public void addContact(Contact contact) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (contacts.containsKey(contact.getContactId())) {</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException (&quot;Contact ID must be unique.&quot;);</span>
+        }
+<span class="fc" id="L27">        contacts.put(contact.getContactId(), contact);</span>
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * Deletes a contact from the service by contactId.
+     * @param contactId The unique ID of the contact to delete
+     * @throws IllegalArgumentException if the contactId does not exist
+     */
+    public void deleteContact(String contactId) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (!contacts.containsKey(contactId)) {</span>
+<span class="fc" id="L37">            throw new IllegalArgumentException (&quot;Contact ID not found.&quot;);</span>
+        }
+<span class="fc" id="L39">        contacts.remove(contactId);</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Updates the first name of a contact by contactId.
+     * @param contactId The unique ID of the contact
+     * @param newFirstName The new first name value
+     * @throws IllegalArgumentException if the contactId does not exist
+     */
+    public void updateFirstName(String contactId, String newFirstName) {
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (!contacts.containsKey(contactId)) {</span>
+<span class="fc" id="L50">            throw new IllegalArgumentException (&quot;Contact ID not found.&quot;);</span>
+        }
+<span class="fc" id="L52">        Contact contact = contacts.get(contactId);</span>
+<span class="fc" id="L53">        contact.setFirstName(newFirstName);</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Updates the last name of a contact by contactId.
+     * @param contactId The unique ID of the contact
+     * @param newLastName The new last name value
+     * @throws IllegalArgumentException if the contactId does not exist
+     */
+    public void updateLastName(String contactId, String newLastName) {
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (!contacts.containsKey(contactId)) {</span>
+<span class="nc" id="L64">            throw new IllegalArgumentException (&quot;Contact ID not found.&quot;);</span>
+        }
+<span class="fc" id="L66">        Contact contact = contacts.get(contactId);</span>
+<span class="fc" id="L67">        contact.setLastName(newLastName);</span>
+<span class="fc" id="L68">    }</span>
+
+    /**
+     * Updates the phone number of a contact by contactId.
+     * @param contactId The unique ID of the contact
+     * @param newPhone The new phone value (must be exactly 10 digits)
+     * @throws IllegalArgumentException if the contactId does not exist
+     */
+    public void updatePhone(String contactId, String newPhone) {
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (!contacts.containsKey(contactId)) {</span>
+<span class="nc" id="L78">            throw new IllegalArgumentException (&quot;Contact ID not found.&quot;);</span>
+        }
+<span class="fc" id="L80">        Contact contact = contacts.get(contactId);</span>
+<span class="fc" id="L81">        contact.setPhone(newPhone);</span>
+<span class="fc" id="L82">    }</span>
+
+    /**
+     * Updates the address of a contact by contactId.
+     * @param contactId The unique ID of the contact
+     * @param newAddress The new address value
+     * @throws IllegalArgumentException if the contactId does not exist
+     */
+    public void updateAddress(String contactId, String newAddress) {
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">        if (!contacts.containsKey(contactId)) {</span>
+<span class="nc" id="L92">            throw new IllegalArgumentException (&quot;Contact ID not found.&quot;);</span>
+        }
+<span class="fc" id="L94">        Contact contact = contacts.get(contactId);</span>
+<span class="fc" id="L95">        contact.setAddress(newAddress);</span>
+<span class="fc" id="L96">    }</span>
+
+    /**
+     * Gets a contact by contactId. Used for testing or inspection.
+     * @param contactId The unique ID of the contact
+     * @return The Contact object, or null if not found
+     */
+    public Contact getContact(String contactId) {
+<span class="fc" id="L104">        return contacts.get(contactId);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

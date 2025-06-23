@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Appointment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">appointment-service</a> &gt; <a href="index.source.html" class="el_package">CS_320.Appointment_Service</a> &gt; <span class="el_source">Appointment.java</span></div><h1>Appointment.java</h1><pre class="source lang-java linenums">package CS_320.Appointment_Service;
+import java.util.Date;
+
+public class Appointment {
+    
+    private final String appointmentId;
+
+    private Date appointmentDate;
+
+    private String description;
+
+<span class="fc" id="L12">    public Appointment (String appointmentId, Date appointmentDate, String description) {</span>
+<span class="pc bpc" id="L13" title="1 of 4 branches missed.">        if (appointmentId == null || appointmentId.length() &gt; 10) {</span>
+<span class="fc" id="L14">            throw new IllegalArgumentException (&quot;ID cannot be null or longer than 10 characters.&quot;);</span>
+        }
+
+<span class="fc bfc" id="L17" title="All 4 branches covered.">        if (description == null || description.length() &gt; 50) {</span>
+<span class="fc" id="L18">            throw new IllegalArgumentException (&quot;Description cannot be null or longer than 50 characters&quot;);</span>
+        }
+
+<span class="fc bfc" id="L21" title="All 4 branches covered.">        if (appointmentDate == null || appointmentDate.before(new Date())) {</span>
+<span class="fc" id="L22">            throw new IllegalArgumentException (&quot;Appointment date cannot be null or in the past.&quot;);</span>
+        }
+
+<span class="fc" id="L25">        this.appointmentId = appointmentId;</span>
+<span class="fc" id="L26">        this.appointmentDate = appointmentDate;</span>
+<span class="fc" id="L27">        this.description = description;</span>
+<span class="fc" id="L28">    }</span>
+    
+    public String getAppointmentId() {
+<span class="fc" id="L31">        return appointmentId;</span>
+    }
+
+    public String getDescription() {
+<span class="fc" id="L35">        return description;</span>
+    }
+
+    public Date getAppointmentDate() {
+<span class="fc" id="L39">        return new Date(appointmentDate.getTime());</span>
+    }
+
+    public void setAppointmentDate(Date appointmentDate) {
+<span class="pc bpc" id="L43" title="2 of 4 branches missed.">        if (appointmentDate == null || appointmentDate.before(new Date())) {</span>
+<span class="nc" id="L44">            throw new IllegalArgumentException (&quot;Appointment Date cannot be null or in the past.&quot;);</span>
+        }
+<span class="fc" id="L46">        this.appointmentDate = new Date(appointmentDate.getTime());</span>
+<span class="fc" id="L47">    }</span>
+
+    public void setDescription(String description) {
+<span class="pc bpc" id="L50" title="2 of 4 branches missed.">        if (description == null || description.length() &gt; 50) {</span>
+<span class="nc" id="L51">            throw new IllegalArgumentException (&quot;Description cannot be longer than 50 characters.&quot;);</span>
+        }
+<span class="fc" id="L53">        this.description = description;</span>
+<span class="fc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
